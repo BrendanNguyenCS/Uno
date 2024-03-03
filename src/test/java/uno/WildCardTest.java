@@ -5,11 +5,9 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WildCardTest {
-
     @Nested
     @DisplayName("Wild Card: set effective color")
-    class setEffectiveColor {
-
+    class SetEffectiveColor {
         @Test
         @DisplayName("set invalid color")
         void invalidColor() {
@@ -43,8 +41,7 @@ class WildCardTest {
 
     @Nested
     @DisplayName("Wild Card: set random effective color")
-    class setRandomEffectiveColor {
-
+    class SetRandomEffectiveColor {
         @Test
         @DisplayName("None cannot be an effective color")
         void noneIsInvalid() {
@@ -71,7 +68,6 @@ class WildCardTest {
     @Nested
     @DisplayName("Wild Card: Playable")
     class PlayableTests {
-
         final WildCard w = new WildCard();
 
         @Test
@@ -102,8 +98,7 @@ class WildCardTest {
 
     @Nested
     @DisplayName("Wild Card: toString")
-    class toString {
-
+    class ToString {
         @Test
         @DisplayName("toString returns correct string")
         void newWildCardString() {

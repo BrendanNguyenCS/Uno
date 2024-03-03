@@ -4,11 +4,9 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SpecialCardTest {
-
     @Nested
     @DisplayName("Special Card: Constructor")
     class ExceptionTests {
-
         @Test
         @DisplayName("valid card and color values")
         void validCard() {
@@ -31,7 +29,6 @@ class SpecialCardTest {
     @Nested
     @DisplayName("Special Card: Playable")
     class PlayableTests {
-
         final SpecialCard yellowDrawTwo = new SpecialCard("Draw Two", "Yellow");
 
         @Test

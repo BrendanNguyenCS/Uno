@@ -7,8 +7,7 @@ class DeckTest {
 
     @Nested
     @DisplayName("Deck: add to deck")
-    class addToDeck {
-
+    class AddToDeck {
         @Test
         @DisplayName("adding a single card")
         void addOneCard() {
@@ -47,8 +46,7 @@ class DeckTest {
 
     @Nested
     @DisplayName("Deck: initiate deck")
-    class initiateDeck {
-
+    class InitiateDeck {
         @Test
         @DisplayName("Base path")
         void initiateDeck1() {
@@ -58,8 +56,7 @@ class DeckTest {
 
         @Nested
         @DisplayName("Exceptions")
-        class initiateDeckExceptions {
-
+        class InitiateDeckExceptions {
             @Test
             @DisplayName("Invalid count digit cards per color")
             void invalidDigitCount() {
@@ -78,7 +75,6 @@ class DeckTest {
                 assertThrows(IllegalArgumentException.class, () -> new Deck(1, 1, -1));
             }
         }
-
     }
 
     @Test

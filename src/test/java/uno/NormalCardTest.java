@@ -4,11 +4,9 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class NormalCardTest {
-
     @Nested
     @DisplayName("Normal Card: Constructor")
     class ExceptionTests {
-
         @Test
         @DisplayName("valid card and color values")
         void validCard() {
@@ -37,7 +35,6 @@ class NormalCardTest {
     @Nested
     @DisplayName("Normal Card: Playable")
     class PlayableTests {
-
         final NormalCard red5 = new NormalCard(5, "Red");
 
         @Test

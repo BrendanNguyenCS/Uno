@@ -16,6 +16,10 @@ public class Player {
      * The player's name
      */
     private final String name;
+    /**
+     * The player's current score
+     */
+    private int score = 0;
 
     /**
      * Constructor
@@ -23,6 +27,14 @@ public class Player {
     public Player(String name) {
         hand = new ArrayList<>();
         this.name = name;
+    }
+
+    /**
+     * Add points to the player's score
+     * @param points the number of points to add
+     */
+    public void addPoints(int points) {
+        score += points;
     }
 
     /**

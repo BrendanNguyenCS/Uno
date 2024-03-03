@@ -7,15 +7,12 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameStateTest {
-
     @Nested
     @DisplayName("GameState: start game")
-    class startGame {
-
+    class StartGame {
         @Nested
         @DisplayName("Exceptions")
-        class startGameExceptions {
-
+        class StartGameExceptions {
             @Test
             @DisplayName("Invalid number of players")
             void invalidPlayers() {
@@ -61,7 +58,7 @@ public class GameStateTest {
 
     @Nested
     @DisplayName("GameState: initiate direction")
-    class initiateDirection {
+    class InitiateDirection {
         @Test
         @DisplayName("Initiate forward direction")
         void initiateForwardDirection() {
@@ -192,8 +189,7 @@ public class GameStateTest {
 
     @Nested
     @DisplayName("GameState: get current player")
-    class getCurrentPlayer {
-
+    class GetCurrentPlayer {
         @Test
         @DisplayName("Empty player list")
         void getCurrentPlayerEmpty() {

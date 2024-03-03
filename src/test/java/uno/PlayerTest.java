@@ -4,6 +4,22 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
+    @Test
+    @DisplayName("Player: constructor")
+    void constructor() {
+        Player me = new Player("Brendan");
+        assertEquals("Brendan", me.getName());
+        assertEquals(0, me.getScore());
+        assertTrue(me.getHand().isEmpty());
+    }
+
+    @Test
+    @DisplayName("Player: add points")
+    void addPoints() {
+        Player me = new Player("Brendan");
+        me.addPoints(100);
+        assertEquals(100, me.getScore());
+    }
 
     @Test
     @DisplayName("Player: add to hand")
@@ -30,8 +46,7 @@ class PlayerTest {
 
     @Nested
     @DisplayName("Player: play card")
-    class playCard {
-
+    class PlayCard {
         @Test
         @DisplayName("Only 1 playable card")
         void hasPlayableCard() {

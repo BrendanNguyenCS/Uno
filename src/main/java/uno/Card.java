@@ -23,11 +23,10 @@ public abstract class Card {
     private final String type;
     /**
      * The value of this Card. The possible value of the card is determined by its type.
-     * <ul>
-     *     <li>Normal cards have values between "0" and "9"</li>
-     *     <li>Special cards have values of either "Skip", "Reverse", or "Draw Two"</li>
-     *     <li>Wild cards have a value of "Wild"</li>
-     * </ul>
+     * <p>
+     * - Normal cards have values between "0" and "9"<br>
+     * - Special cards have values of either "Skip", "Reverse", or "Draw Two"<br>
+     * - Wild cards have a value of "Wild"
      */
     private final String value;
     /**
