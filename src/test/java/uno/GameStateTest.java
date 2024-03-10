@@ -249,6 +249,10 @@ public class GameStateTest {
             assertEquals("Player 2", gs.getCurrentPlayer().toString());
             gs.initiateForwardDirection();
             assertEquals("Player 3", gs.getCurrentPlayer().toString());
+            gs.initiateForwardDirection();
+            assertEquals("Player 4", gs.getCurrentPlayer().toString());
+            gs.initiateForwardDirection();
+            assertEquals("Player 1", gs.getCurrentPlayer().toString());
         }
     }
 
