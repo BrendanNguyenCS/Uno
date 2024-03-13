@@ -277,11 +277,11 @@ public class GameState {
         }
     }
 
-    public static void main(String[] args) {
+    private static void runGame(int countPlayers, int countInitialCardsPerPlayer, int countDigitCardsPerColor, int countSpecialCardsPerColor, int countWildCards) {
         System.out.println("Starting game...");
         System.out.println("--------------------");
         int turnCount = 0;
-        GameState g = GameState.startGame(4, 7, 2, 2, 4);
+        GameState g = GameState.startGame(countPlayers, countInitialCardsPerPlayer, countDigitCardsPerColor, countSpecialCardsPerColor, countWildCards);
         Player p;
         while (!g.isGameOver()) {
             System.out.println("--------------------");
@@ -305,5 +305,11 @@ public class GameState {
             case 2 -> System.out.println("The deck was refilled twice.");
             default -> System.out.println("The deck was refilled " + g.countRefillDeck + " times.");
         }
+    }
+
+    public static void main(String[] args) {
+        runGame(2, 7, 2, 2, 4);
+        //runGame(4, 7, 2, 2, 4);
+        //runGame(6, 8, 3, 3, 3);
     }
 }
