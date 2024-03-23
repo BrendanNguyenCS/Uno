@@ -8,9 +8,9 @@ package uno;
 public class NormalCard extends Card {
     /**
      * Constructor
-     *
      * @param value the card's value
      * @param color the card's (effective) color
+     * @throws IllegalArgumentException if the card's value is not between {@code 0} and {@code 9} inclusive and/or the color is invalid
      */
     public NormalCard(int value, String color) throws IllegalArgumentException {
         super("Normal",

@@ -36,7 +36,11 @@ public abstract class Card {
     private String color;
 
     /**
-     * Constructors
+     * Constructor
+     * @param type the card's type
+     * @param value the card's value
+     * @param color the card's (effective) color
+     * @throws IllegalArgumentException if any of the input values are invalid
      */
     public Card(String type, String value, String color) {
         if (Arrays.asList(types).contains(type) &&

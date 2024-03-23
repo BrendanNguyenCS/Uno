@@ -12,6 +12,8 @@ import java.util.Random;
 public class WildCard extends Card {
     /**
      * Constructor
+     * <p>
+     * Wild cards don't have a default color when first created. The effective color of a wild card is set when it is placed.
      */
     public WildCard() {
         super("Wild", "Wild", "None");
@@ -20,6 +22,7 @@ public class WildCard extends Card {
     /**
      * Sets the effective color of this card. Is guarded so that this is only possible for wild cards.
      * @param color the new effective color
+     * @throws IllegalArgumentException if the color is not a valid color
      */
     public void setEffectiveColor(String color) {
         super.setColor(color);

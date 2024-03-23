@@ -85,6 +85,14 @@ public class GameState {
      * <p>
      * That is, the players should be arranged, their initial hands have been dealt,
      * and the discard pile and draw pile have been created.
+     *
+     * @param countPlayers the number of players
+     * @param countInitialCardsPerPlayer the number of cards initially dealt to each player
+     * @param countDigitCardsPerColor the number of {@link NormalCard normal} cards for each digit and color
+     * @param countSpecialCardsPerColor the number of {@link SpecialCard special} cards of each kind for each color
+     * @param countWildCards the number of total {@link WildCard wild} cards
+     * @return the game state
+     * @throws IllegalArgumentException if the number of players is less than 2 or the number of initial cards per player is less than 1
      */
     public static GameState startGame(int countPlayers,
                                       int countInitialCardsPerPlayer,

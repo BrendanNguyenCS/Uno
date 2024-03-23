@@ -52,6 +52,7 @@ public class Deck {
      * @param countDigitCardsPerColor the number of normal cards for each digit and color
      * @param countSpecialCardsPerColor the number of special cards of each kind for each color
      * @param countWildCards the number of total wild cards
+     * @throws IllegalArgumentException if any of the input values are invalid
      */
     public void initiateDeck(int countDigitCardsPerColor,
                          int countSpecialCardsPerColor,

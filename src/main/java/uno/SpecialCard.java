@@ -15,9 +15,9 @@ public class SpecialCard extends Card {
 
     /**
      * Constructor
-     *
      * @param value the card's value
      * @param color the card's (effective) color
+     * @throws IllegalArgumentException if the card has an invalid special card value and/or an invalid color
      */
     public SpecialCard(String value, String color) {
         super("Special",
