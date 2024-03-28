@@ -37,6 +37,14 @@ class WildCardTest {
             w.setEffectiveColor("Blue");
             assertThrows(IllegalArgumentException.class, () -> w.setEffectiveColor("Purple"));
         }
+
+        @Test
+        @DisplayName("Set color to None for card with existing color")
+        void noneColorWithExistingColor() {
+            WildCard w = new WildCard();
+            w.setEffectiveColor("Blue");
+            assertThrows(IllegalArgumentException.class, () -> w.setEffectiveColor("None"));
+        }
     }
 
     @Nested
