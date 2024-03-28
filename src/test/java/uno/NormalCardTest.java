@@ -8,25 +8,25 @@ class NormalCardTest {
     @DisplayName("Normal Card: Constructor")
     class ExceptionTests {
         @Test
-        @DisplayName("valid card and color values")
+        @DisplayName("Valid card and color values")
         void validCard() {
             assertDoesNotThrow(() -> new NormalCard(9, "Red"));
         }
 
         @Test
-        @DisplayName("invalid card value, greater than 9")
+        @DisplayName("Invalid card value, greater than 9")
         void invalidValue1() {
             assertThrows(IllegalArgumentException.class, () -> new NormalCard(10, "Red"));
         }
 
         @Test
-        @DisplayName("invalid card value, less than 0")
+        @DisplayName("Invalid card value, less than 0")
         void invalidValue2() {
             assertThrows(IllegalArgumentException.class, () -> new NormalCard(-1, "Red"));
         }
 
         @Test
-        @DisplayName("invalid color value")
+        @DisplayName("Invalid color value")
         void invalidColor() {
             assertThrows(IllegalArgumentException.class, () -> new NormalCard(8, "Purple"));
         }

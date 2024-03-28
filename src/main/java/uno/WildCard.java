@@ -16,7 +16,7 @@ public class WildCard extends Card {
      * Wild cards don't have a default color when first created. The effective color of a wild card is set when it is placed.
      */
     public WildCard() {
-        super("Wild", "Wild", "None");
+        super("Wild", "Wild");
     }
 
     /**
@@ -33,7 +33,7 @@ public class WildCard extends Card {
      */
     public void setRandomEffectiveColor() {
         Random r = new Random();
-        int i = r.nextInt(colors.length - 1);
+        int i = r.nextInt(colors.length);
         setEffectiveColor(colors[i]);
     }
 

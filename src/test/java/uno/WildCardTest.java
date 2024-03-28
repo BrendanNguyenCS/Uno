@@ -6,24 +6,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WildCardTest {
     @Nested
-    @DisplayName("Wild Card: set effective color")
+    @DisplayName("Wild Card: Set effective color")
     class SetEffectiveColor {
         @Test
-        @DisplayName("set invalid color")
+        @DisplayName("Set invalid color")
         void invalidColor() {
             WildCard w = new WildCard();
             assertThrows(IllegalArgumentException.class, () -> w.setEffectiveColor("Purple"));
         }
 
         @Test
-        @DisplayName("set valid color")
+        @DisplayName("Set valid color")
         void validColor() {
             WildCard w = new WildCard();
             assertDoesNotThrow(() -> w.setEffectiveColor("Blue"));
         }
 
         @Test
-        @DisplayName("set valid color for card with existing color")
+        @DisplayName("Set valid color for card with existing color")
         void validColorWithExistingColor() {
             WildCard w = new WildCard();
             w.setEffectiveColor("Blue");
@@ -31,7 +31,7 @@ class WildCardTest {
         }
 
         @Test
-        @DisplayName("set invalid color for card with existing color")
+        @DisplayName("Set invalid color for card with existing color")
         void invalidColorWithExistingColor() {
             WildCard w = new WildCard();
             w.setEffectiveColor("Blue");
@@ -40,12 +40,13 @@ class WildCardTest {
     }
 
     @Nested
-    @DisplayName("Wild Card: set random effective color")
+    @DisplayName("Wild Card: Set random effective color")
     class SetRandomEffectiveColor {
         @Test
         @DisplayName("None cannot be an effective color")
         void noneIsInvalid() {
             WildCard w = new WildCard();
+            assertEquals("None", w.getColor());
             w.setRandomEffectiveColor();
 
             // We want to reset the color enough times that every color should be chosen at least once

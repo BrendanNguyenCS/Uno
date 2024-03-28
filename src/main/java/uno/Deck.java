@@ -65,7 +65,7 @@ public class Deck {
         }
 
         // List of possible colors and special card values
-        String[] colors = { "Red", "Yellow", "Blue", "Green" };
+        String[] colors = Card.colors;
         String[] valuesSpecial = SpecialCard.values;
 
         // add wild cards

@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class DeckTest {
 
     @Nested
-    @DisplayName("Deck: add to deck")
+    @DisplayName("Deck: Add to deck")
     class AddToDeck {
         @Test
-        @DisplayName("adding a single card")
+        @DisplayName("Adding a single card")
         void addOneCard() {
             Deck d = new Deck();
             Card c = new NormalCard(6, "Red");
@@ -30,7 +30,7 @@ class DeckTest {
     }
 
     @Test
-    @DisplayName("Deck: check for empty deck")
+    @DisplayName("Deck: Check for empty deck")
     void isDeckEmpty() {
         Deck d = new Deck();
 
@@ -45,7 +45,7 @@ class DeckTest {
     }
 
     @Nested
-    @DisplayName("Deck: initiate deck")
+    @DisplayName("Deck: Initiate deck")
     class InitiateDeck {
         @Test
         @DisplayName("Base path")
@@ -78,7 +78,7 @@ class DeckTest {
     }
 
     @Test
-    @DisplayName("Deck: draw from deck")
+    @DisplayName("Deck: Draw from deck")
     void drawFromDeck() {
         Deck d = new Deck();
         Card c = new NormalCard(6, "Red");
@@ -87,7 +87,7 @@ class DeckTest {
     }
 
     @Test
-    @DisplayName("Deck: clear deck")
+    @DisplayName("Deck: Clear deck")
     void clearDeck() {
         Deck d = new Deck(5, 3, 6);
         d.clearDeck();
@@ -95,7 +95,7 @@ class DeckTest {
     }
 
     @Test
-    @DisplayName("Deck: get top card")
+    @DisplayName("Deck: Get top card")
     void getTopCard() {
         Deck d = new Deck();
         Card c = new NormalCard(6, "Red");

@@ -8,19 +8,19 @@ class SpecialCardTest {
     @DisplayName("Special Card: Constructor")
     class ExceptionTests {
         @Test
-        @DisplayName("valid card and color values")
+        @DisplayName("Valid card and color values")
         void validCard() {
             assertDoesNotThrow(() -> new SpecialCard("Reverse", "Red"));
         }
 
         @Test
-        @DisplayName("invalid card value")
+        @DisplayName("Invalid card value")
         void invalidValue() {
             assertThrows(IllegalArgumentException.class, () -> new SpecialCard("Draw Four", "Red"));
         }
 
         @Test
-        @DisplayName("invalid color value")
+        @DisplayName("Invalid color value")
         void invalidColor() {
             assertThrows(IllegalArgumentException.class, () -> new SpecialCard("Skip", "Purple"));
         }

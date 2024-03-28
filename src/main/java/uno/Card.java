@@ -12,7 +12,7 @@ public abstract class Card {
     /**
      * The list of possible colors for Uno cards. The last element is "None" which is used for wild cards.
      */
-    public static final String[] colors = {"Red", "Yellow", "Green", "Blue", "None"};
+    public static final String[] colors = {"Red", "Yellow", "Green", "Blue"};
     /**
      * The list of possible types for Uno cards.
      */
@@ -49,6 +49,22 @@ public abstract class Card {
             this.type = type;
             this.color = color;
             this.value = value;
+        } else {
+            throw new IllegalArgumentException("Invalid values detected");
+        }
+    }
+
+    /**
+     * Constructor (to be utilized only by {@link WildCard})
+     * @param type the card's type
+     * @param value the card's value
+     * @throws IllegalArgumentException if any of the input values are invalid
+     */
+    public Card(String type, String value) {
+        if (Arrays.asList(types).contains(type) && !value.isEmpty()) {
+            this.type = type;
+            this.value = value;
+            this.color = "None";
         } else {
             throw new IllegalArgumentException("Invalid values detected");
         }
