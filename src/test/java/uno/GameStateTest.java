@@ -1,9 +1,8 @@
 package uno;
 
 import org.junit.jupiter.api.*;
-
+import java.lang.reflect.Method;
 import java.util.NoSuchElementException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameStateTest {
@@ -257,8 +256,10 @@ public class GameStateTest {
     }
 
     @Test
-    @DisplayName("GameState: main")
-    void mainTest() {
-        assertDoesNotThrow(() -> GameState.main(new String[]{}));
+    @DisplayName("GameState: runGame")
+    void runGameTest() throws Exception {
+        Method runGame = GameState.class.getDeclaredMethod("runGame", int.class, int.class, int.class, int.class, int.class);
+        runGame.setAccessible(true);
+        assertDoesNotThrow(() -> runGame.invoke(null, 2, 2, 1, 1, 1));
     }
 }

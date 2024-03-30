@@ -316,8 +316,26 @@ public class GameState {
     }
 
     public static void main(String[] args) {
+        // Get input from command line
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the number of players: ");
+        int countPlayers = in.nextInt();
+        System.out.println("Enter the number of initial cards per player: ");
+        int countInitialCardsPerPlayer = in.nextInt();
+        System.out.println("Enter the number of normal cards per digit and color: ");
+        int countDigitCardsPerColor = in.nextInt();
+        System.out.println("Enter the number of special cards per color: ");
+        int countSpecialCardsPerColor = in.nextInt();
+        System.out.println("Enter the number of wild cards: ");
+        int countWildCards = in.nextInt();
+        in.close();
+        // Run the game
+        runGame(countPlayers, countInitialCardsPerPlayer, countDigitCardsPerColor, countSpecialCardsPerColor, countWildCards);
+
+        /* Sample games to run
         runGame(2, 7, 2, 2, 4);
-        //runGame(4, 7, 2, 2, 4);
-        //runGame(6, 8, 3, 3, 3);
+        runGame(4, 7, 2, 2, 4);
+        runGame(6, 8, 3, 3, 3);
+        */
     }
 }
