@@ -64,7 +64,7 @@ class PlayerTest {
         void hasMultiplePlayableCards() {
             Player me = new Player("Brendan");
             Card c = new NormalCard(1, "Red");
-            Card c2 = new WildCard();
+            Card c2 = new WildCard("Wild");
             Card c3 = new SpecialCard("Skip", "Blue");
             me.addToHand(c);
             me.addToHand(c2);

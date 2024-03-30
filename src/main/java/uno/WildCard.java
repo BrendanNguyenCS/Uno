@@ -1,6 +1,6 @@
 package uno;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * Represents a wild card in the Uno game
@@ -11,12 +11,17 @@ import java.util.Random;
  */
 public class WildCard extends Card {
     /**
+     * Possible colors for a wild card
+     */
+    public static final String[] values = {"Wild", "Draw Four"};
+
+    /**
      * Constructor
      * <p>
      * Wild cards don't have a default color when first created. The effective color of a wild card is set when it is placed.
      */
-    public WildCard() {
-        super("Wild", "Wild");
+    public WildCard(String value) {
+        super("Wild", Arrays.asList(values).contains(value) ? value : "");
     }
 
     /**

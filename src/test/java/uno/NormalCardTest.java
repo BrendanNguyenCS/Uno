@@ -67,7 +67,7 @@ class NormalCardTest {
         @Test
         @DisplayName("Red 5 is playable on Wild with Red effective color")
         void playable4() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             w.setEffectiveColor("Red");
             assertTrue(red5.isPlayable(w));
         }
@@ -89,7 +89,7 @@ class NormalCardTest {
         @Test
         @DisplayName("Red 5 is not playable on Wild with Green effective color")
         void notPlayable3() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             w.setEffectiveColor("Green");
             assertFalse(red5.isPlayable(w));
         }

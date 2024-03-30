@@ -155,17 +155,19 @@ public class GameState {
     }
 
     /**
-     * Draws two cards from the draw pile and adds them to the next player's hand
+     * Draws {@code n} cards from the draw pile and adds them to the next player's hand
+     * @param n the number of cards to draw
+     * @return the next player who drew the cards
      */
-    Player drawTwoToNextPlayer() {
-        Player n = players.peekFirst();
-        if (n != null) {
-            for (int i = 0; i < 2; i++) {
+    Player drawCardsToNextPlayer(int n) {
+        Player p = players.peekFirst();
+        if (p != null) {
+            for (int i = 0; i < n; i++) {
                 checkDecks();
-                n.addToHand(draw.drawFromDeck());
+                p.addToHand(draw.drawFromDeck());
             }
         }
-        return n;
+        return p;
     }
 
     /**
@@ -250,7 +252,7 @@ public class GameState {
                             System.out.println("\tThey have played " + next + ".");
                             checkDecks();
                             moveInDirection();
-                            Player drawing = drawTwoToNextPlayer();
+                            Player drawing = drawCardsToNextPlayer(2);
                             System.out.println("\t" + drawing + " will draw two cards and be skipped.");
                             break;
                         case "Reverse":
@@ -273,10 +275,15 @@ public class GameState {
                     discard.addToDeck(s);
                     break;
                 case WildCard w:
-                    w.setRandomEffectiveColor();
-                    discard.addToDeck(w);
-                    System.out.println("\tThey have played " + next + ".");
-                    break;
+                    switch (w.getValue()) {
+                        case "Wild":
+                            w.setRandomEffectiveColor();
+                            discard.addToDeck(w);
+                            System.out.println("\tThey have played " + next + ".");
+                            break;
+                        case "Draw Four":
+                            break;
+                    }
                 default:
                     break;
             }

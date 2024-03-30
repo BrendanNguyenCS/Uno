@@ -11,21 +11,21 @@ class WildCardTest {
         @Test
         @DisplayName("Set invalid color")
         void invalidColor() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             assertThrows(IllegalArgumentException.class, () -> w.setEffectiveColor("Purple"));
         }
 
         @Test
         @DisplayName("Set valid color")
         void validColor() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             assertDoesNotThrow(() -> w.setEffectiveColor("Blue"));
         }
 
         @Test
         @DisplayName("Set valid color for card with existing color")
         void validColorWithExistingColor() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             w.setEffectiveColor("Blue");
             assertDoesNotThrow(() -> w.setEffectiveColor("Red"));
         }
@@ -33,7 +33,7 @@ class WildCardTest {
         @Test
         @DisplayName("Set invalid color for card with existing color")
         void invalidColorWithExistingColor() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             w.setEffectiveColor("Blue");
             assertThrows(IllegalArgumentException.class, () -> w.setEffectiveColor("Purple"));
         }
@@ -41,7 +41,7 @@ class WildCardTest {
         @Test
         @DisplayName("Set color to None for card with existing color")
         void noneColorWithExistingColor() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             w.setEffectiveColor("Blue");
             assertThrows(IllegalArgumentException.class, () -> w.setEffectiveColor("None"));
         }
@@ -53,7 +53,7 @@ class WildCardTest {
         @Test
         @DisplayName("None cannot be an effective color")
         void noneIsInvalid() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             assertEquals("None", w.getColor());
             w.setRandomEffectiveColor();
 
@@ -68,7 +68,7 @@ class WildCardTest {
         @Test
         @DisplayName("Effective color is set")
         void correctSet() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             w.setRandomEffectiveColor();
             assertTrue(Set.of("Red", "Yellow", "Green", "Blue").contains(w.getColor()));
         }
@@ -77,7 +77,7 @@ class WildCardTest {
     @Nested
     @DisplayName("Wild Card: Playable")
     class PlayableTests {
-        final WildCard w = new WildCard();
+        final WildCard w = new WildCard("Wild");
 
         @Test
         @DisplayName("Wild is playable on Red 6")
@@ -99,7 +99,7 @@ class WildCardTest {
         @DisplayName("Wild is playable on Wild with Red effective color")
         void playable3() {
             w.setRandomEffectiveColor();
-            WildCard w2 = new WildCard();
+            WildCard w2 = new WildCard("Wild");
             w2.setEffectiveColor("Red");
             assertTrue(w.isPlayable(w2));
         }
@@ -111,14 +111,14 @@ class WildCardTest {
         @Test
         @DisplayName("toString returns correct string")
         void newWildCardString() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             assertEquals("Wild set to None", w.toString());
         }
 
         @Test
         @DisplayName("toString returns correct string")
         void setWildCardString() {
-            WildCard w = new WildCard();
+            WildCard w = new WildCard("Wild");
             w.setEffectiveColor("Blue");
             assertEquals("Wild set to Blue", w.toString());
         }

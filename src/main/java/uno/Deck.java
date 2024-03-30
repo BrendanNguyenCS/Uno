@@ -70,7 +70,7 @@ public class Deck {
 
         // add wild cards
         for (int i = 0; i < countWildCards; i++) {
-            deck.add(new WildCard());
+            deck.add(new WildCard("Wild"));
         }
 
         // add normal and special cards

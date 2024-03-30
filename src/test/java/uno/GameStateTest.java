@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GameStateTest {
     @Nested
-    @DisplayName("GameState: start game")
+    @DisplayName("GameState: Start game")
     class StartGame {
         @Nested
         @DisplayName("Exceptions")
@@ -56,7 +56,7 @@ public class GameStateTest {
     }
 
     @Nested
-    @DisplayName("GameState: initiate direction")
+    @DisplayName("GameState: Initiate direction")
     class InitiateDirection {
         @Test
         @DisplayName("Initiate forward direction")
@@ -142,24 +142,44 @@ public class GameStateTest {
         }
     }
 
-    @Test
-    @DisplayName("GameState: draw two to next player")
-    void drawTwoToNextPlayer() {
-        GameState gs = GameState.startGame(4, 2, 1, 1, 1);
-        Player next = gs.getPlayers().peekFirst();
-        assert next != null;
-        assertEquals("Player 1", next.getName());
-        gs.initiateForwardDirection();
-        // simulate Player 1 has played a draw two card
-        gs.drawTwoToNextPlayer();
-        next = gs.getPlayers().peekFirst();
-        assert next != null;
-        assertEquals("Player 2", next.getName());
-        assertEquals(4, next.getHand().size());
+    @Nested
+    @DisplayName("GameState: Draw cards to next player")
+    class drawCardsToNextPlayer {
+        @Test
+        @DisplayName("Draw two to next player")
+        void drawTwoToNextPlayer() {
+            GameState gs = GameState.startGame(4, 2, 1, 1, 1);
+            Player next = gs.getPlayers().peekFirst();
+            assert next != null;
+            assertEquals("Player 1", next.getName());
+            gs.initiateForwardDirection();
+            // simulate Player 1 has played a draw two card
+            gs.drawCardsToNextPlayer(2);
+            next = gs.getPlayers().peekFirst();
+            assert next != null;
+            assertEquals("Player 2", next.getName());
+            assertEquals(4, next.getHand().size());
+        }
+
+        @Test
+        @DisplayName("Draw two to next player")
+        void drawFourToNextPlayer() {
+            GameState gs = GameState.startGame(4, 2, 1, 1, 1);
+            Player next = gs.getPlayers().peekFirst();
+            assert next != null;
+            assertEquals("Player 1", next.getName());
+            gs.initiateForwardDirection();
+            // simulate Player 1 has played a draw four card
+            gs.drawCardsToNextPlayer(4);
+            next = gs.getPlayers().peekFirst();
+            assert next != null;
+            assertEquals("Player 2", next.getName());
+            assertEquals(6, next.getHand().size());
+        }
     }
 
     @Test
-    @DisplayName("GameState: is game over")
+    @DisplayName("GameState: Is game over")
     public void isGameOver() {
         GameState gs = GameState.startGame(4, 2, 1, 1, 1);
         assertFalse(gs.isGameOver());
@@ -171,7 +191,7 @@ public class GameStateTest {
     }
 
     @Test
-    @DisplayName("GameState: check decks")
+    @DisplayName("GameState: Check decks")
     void checkDecks() {
         GameState gs = GameState.startGame(4, 2, 1, 1, 1);
         assertEquals(44, gs.getDraw().getDeck().size());
@@ -187,7 +207,7 @@ public class GameStateTest {
     }
 
     @Nested
-    @DisplayName("GameState: get current player")
+    @DisplayName("GameState: Get current player")
     class GetCurrentPlayer {
         @Test
         @DisplayName("Empty player list")
@@ -260,6 +280,6 @@ public class GameStateTest {
     void runGameTest() throws Exception {
         Method runGame = GameState.class.getDeclaredMethod("runGame", int.class, int.class, int.class, int.class, int.class);
         runGame.setAccessible(true);
-        assertDoesNotThrow(() -> runGame.invoke(null, 2, 2, 1, 1, 1));
+        assertDoesNotThrow(() -> runGame.invoke(null, 4, 7, 2, 2, 4));
     }
 }
