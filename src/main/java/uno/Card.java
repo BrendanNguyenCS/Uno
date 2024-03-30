@@ -84,8 +84,8 @@ public abstract class Card {
     }
 
     /**
-     * Denotes whether the current card is playable. All special cards are playable at any time while normal cards of
-     * the same color as the last played card can be played.
+     * Denotes whether the current card is playable. All wild cards are playable at any time while normal and special cards of
+     * the same color or value as the last played card can be played.
      * @param lastPlayed the last played card
      */
     public boolean isPlayable(Card lastPlayed) {

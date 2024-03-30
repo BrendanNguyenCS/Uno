@@ -24,6 +24,12 @@ class SpecialCardTest {
         void invalidColor() {
             assertThrows(IllegalArgumentException.class, () -> new SpecialCard("Skip", "Purple"));
         }
+
+        @Test
+        @DisplayName("Can't set color value to None")
+        void noneColor() {
+            assertThrows(IllegalArgumentException.class, () -> new SpecialCard("Draw Two", "None"));
+        }
     }
 
     @Nested

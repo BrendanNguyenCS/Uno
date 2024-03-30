@@ -30,6 +30,12 @@ class NormalCardTest {
         void invalidColor() {
             assertThrows(IllegalArgumentException.class, () -> new NormalCard(8, "Purple"));
         }
+
+        @Test
+        @DisplayName("Can't set color value to None")
+        void noneColor() {
+            assertThrows(IllegalArgumentException.class, () -> new NormalCard(3, "None"));
+        }
     }
 
     @Nested
