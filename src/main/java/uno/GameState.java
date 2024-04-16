@@ -11,7 +11,7 @@ import java.util.*;
  * - The game must have at least 2 {@link Player players} to start.<br>
  * - Players must have 1 or more {@link NormalCard normal} card per digit and color.<br>
  * - Players can have 0 or more {@link SpecialCard special} cards per color.<br>
- * - Players can have 0 or more {@link WildCard wild} cards.<br>
+ * - Players can have 0 or more {@link WildCard wild} cards per kind.<br>
  */
 @Getter
 public class GameState {
@@ -42,7 +42,7 @@ public class GameState {
      * @param countInitialCardsPerPlayer the number of cards initially dealt to each player
      * @param countDigitCardsPerColor the number of {@link NormalCard normal} cards for each digit and color
      * @param countSpecialCardsPerColor the number of {@link SpecialCard special} cards of each kind for each color
-     * @param countWildCards the number of total {@link WildCard wild} cards
+     * @param countWildCards the number of total {@link WildCard wild} cards per kind
      */
     private GameState(int countPlayers,
                      int countInitialCardsPerPlayer,
@@ -90,7 +90,7 @@ public class GameState {
      * @param countInitialCardsPerPlayer the number of cards initially dealt to each player
      * @param countDigitCardsPerColor the number of {@link NormalCard normal} cards for each digit and color
      * @param countSpecialCardsPerColor the number of {@link SpecialCard special} cards of each kind for each color
-     * @param countWildCards the number of total {@link WildCard wild} cards
+     * @param countWildCards the number of total {@link WildCard wild} cards of each kind
      * @return the game state
      * @throws IllegalArgumentException if the number of players is less than 2 or the number of initial cards per player is less than 1
      */
@@ -278,12 +278,19 @@ public class GameState {
                     switch (w.getValue()) {
                         case "Wild":
                             w.setRandomEffectiveColor();
-                            discard.addToDeck(w);
                             System.out.println("\tThey have played " + next + ".");
                             break;
                         case "Draw Four":
+                            w.setRandomEffectiveColor();
+                            System.out.println("\tThey have played " + next + ".");
+                            checkDecks();
+                            moveInDirection();
+                            Player drawing = drawCardsToNextPlayer(4);
+                            System.out.println("\t" + drawing + " will draw four cards and be skipped.");
                             break;
                     }
+                    discard.addToDeck(w);
+                    break;
                 default:
                     break;
             }

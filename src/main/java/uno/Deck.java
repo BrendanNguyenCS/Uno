@@ -24,7 +24,7 @@ public class Deck {
      * Creates a new full deck
      * @param countDigitCardsPerColor the number of normal cards for each digit and color
      * @param countSpecialCardsPerColor the number of special cards of each kind for each color
-     * @param countWildCards the number of total wild cards
+     * @param countWildCards the number of total wild cards of each kind
      */
     public Deck(int countDigitCardsPerColor,
                 int countSpecialCardsPerColor,
@@ -51,7 +51,7 @@ public class Deck {
      * Create a new full deck of Uno cards given the conditions
      * @param countDigitCardsPerColor the number of normal cards for each digit and color
      * @param countSpecialCardsPerColor the number of special cards of each kind for each color
-     * @param countWildCards the number of total wild cards
+     * @param countWildCards the number of total wild cards of each kind
      * @throws IllegalArgumentException if any of the input values are invalid
      */
     public void initiateDeck(int countDigitCardsPerColor,
@@ -64,13 +64,16 @@ public class Deck {
             throw new IllegalArgumentException("Invalid values detected");
         }
 
-        // List of possible colors and special card values
+        // List of possible colors, special card values, and wild card values
         String[] colors = Card.colors;
         String[] valuesSpecial = SpecialCard.values;
+        String[] valuesWild = WildCard.values;
 
         // add wild cards
-        for (int i = 0; i < countWildCards; i++) {
-            deck.add(new WildCard("Wild"));
+        for (String wild : valuesWild) {
+            for (int i = 0; i < countWildCards; i++) {
+                deck.add(new WildCard(wild));
+            }
         }
 
         // add normal and special cards

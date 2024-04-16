@@ -1,6 +1,16 @@
 # Example of a game of UNO
 
-Notes: Please keep in mind that the current game rules dictate that a player unable to play a card must draw from the draw pile until they are able to play a card.
+Notes: Please keep in mind that the current game rules dictate that a player unable to play a card must draw from the draw pile until they are able to play a card. This example was created before support for draw four cards were added.
+
+```json
+{
+  "countPlayers": 4,
+  "countInitialCardsPerPlayer": 7,
+  "countDigitCardsPerColor": 2,
+  "countSpecialCardsPerColor": 2,
+  "countWildCards": 4
+}
+```
 
 **Starting game...**
 
