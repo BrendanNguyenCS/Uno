@@ -233,11 +233,10 @@ public class GameState {
             /*if (next == null) {
                 checkDecks();
                 p.addToHand(draw.drawFromDeck());
+                next = p.playCard(lastPlayed);
                 if (next == null) {
                     moveInDirection();
                     return;
-                } else {
-                    next = p.playCard(lastPlayed);
                 }
             }*/
 

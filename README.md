@@ -28,16 +28,15 @@ while (next == null) {
     next = p.playCard(lastPlayed);
 }
 ```
-Additionally, you need to uncomment the following code on lines 233-242 in `GameState.java`:
+Additionally, you need to uncomment the following code on lines 233-241 in `GameState.java`:
 ```java
 if (next == null) {
     checkDecks();
     p.addToHand(draw.drawFromDeck());
+    next = p.playCard(lastPlayed);
     if (next == null) {
         moveInDirection();
         return;
-    } else {
-        next = p.playCard(lastPlayed);
     }
 }
 ```
