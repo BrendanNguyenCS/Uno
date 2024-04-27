@@ -10,7 +10,7 @@ import java.util.*;
 @Getter
 public abstract class Card {
     /**
-     * The list of possible colors for Uno cards. The last element is "None" which is used for wild cards.
+     * The list of possible colors for Uno cards.
      */
     public static final String[] colors = {"Red", "Yellow", "Green", "Blue"};
     /**
@@ -23,10 +23,11 @@ public abstract class Card {
     private final String type;
     /**
      * The value of this Card. The possible value of the card is determined by its type.
-     * <p>
-     * - Normal cards have values between "0" and "9"<br>
-     * - Special cards have values of either "Skip", "Reverse", or "Draw Two"<br>
-     * - Wild cards have a value of "Wild"
+     * <ul>
+     *     <li>Normal cards: "0" to "9"</li>
+     *     <li>Special cards: "Skip", "Reverse", "Draw Two"</li>
+     *     <li>Wild cards: "Wild", "Draw Four" </li>
+     * </ul>
      */
     private final String value;
     /**

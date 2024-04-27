@@ -1,6 +1,8 @@
 # Second example of a game of Uno
 
-Notes: Please keep in mind that the current game rules dictate that a player unable to play a card must draw from the draw pile until they are able to play a card. This example includes the draw four support update.
+Note: Please keep in mind that the current game rules dictate that a player unable to play a card must draw from the draw pile until they are able to play a card.
+
+**This is version 2 of the game where draw four is supported.**
 
 ```json
 {
@@ -37,8 +39,8 @@ Player 4's turn
 --------------------
 Player 6's turn
     
-        They have played Red 0.
-        Player 6 has 7 cards.
+    They have played Red 0.
+    Player 6 has 7 cards.
 --------------------
 Player 1's turn
 

@@ -1,6 +1,8 @@
 # Example of a game of UNO
 
-Notes: Please keep in mind that the current game rules dictate that a player unable to play a card must draw from the draw pile until they are able to play a card. This example was created before support for draw four cards were added.
+Note: Please keep in mind that the current game rules dictate that a player unable to play a card must draw from the draw pile until they are able to play a card.
+
+**This is version 1 of the game where draw four is not a feature.**
 
 ```json
 {

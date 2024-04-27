@@ -3,7 +3,7 @@ package uno;
 /**
  * Represents a normal card in the Uno game.
  * <p>
- * Class invariant: Card values must be between {@code 0} and {@code 9} inclusive.
+ * Class invariant: Card values must be an integer between {@code 0} and {@code 9} inclusive.
  */
 public class NormalCard extends Card {
     /**

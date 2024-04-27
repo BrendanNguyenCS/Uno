@@ -7,11 +7,12 @@ import java.util.*;
  * Represents a game of Uno
  * <p>
  * Class invariants:
- * <p>
- * - The game must have at least 2 {@link Player players} to start.<br>
- * - Players must have 1 or more {@link NormalCard normal} card per digit and color.<br>
- * - Players can have 0 or more {@link SpecialCard special} cards per color.<br>
- * - Players can have 0 or more {@link WildCard wild} cards per kind.<br>
+ * <ul>
+ *     <li>The game must have at least 2 {@link Player players} to start.</li>
+ *     <li>Players must have 1 or more {@link NormalCard normal} card per digit and color.</li>
+ *     <li>Players can have 0 or more {@link SpecialCard special} cards per color.</li>
+ *     <li>Players can have 0 or more {@link WildCard wild} cards per kind.</li>
+ * </ul>
  */
 @Getter
 public class GameState {
@@ -219,6 +220,8 @@ public class GameState {
 
             // check if the player has any playable cards
             Card next = p.playCard(lastPlayed);
+
+            // Rule: Players unable to play a card draws until they play a card
             while (next == null) {
                 checkDecks();
                 // draw from the pile until they play a card
@@ -226,19 +229,17 @@ public class GameState {
                 next = p.playCard(lastPlayed);
             }
 
-            /* Alternate rule: Players unable to play a card only draws once from the deck
-            if (next == null) {
+            // Alternate rule: Players unable to play a card only draws once from the deck
+            /*if (next == null) {
                 checkDecks();
                 p.addToHand(draw.drawFromDeck());
                 if (next == null) {
                     moveInDirection();
                     return;
-                }
-                else {
+                } else {
                     next = p.playCard(lastPlayed);
                 }
-            }
-            */
+            }*/
 
             // check type of the next card
             switch (next) {
