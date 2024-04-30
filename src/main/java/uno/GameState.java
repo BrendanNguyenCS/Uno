@@ -222,15 +222,14 @@ public class GameState {
             Card next = p.playCard(lastPlayed);
 
             // Rule: Players unable to play a card draws until they play a card
-            while (next == null) {
+            /*while (next == null) {
                 checkDecks();
-                // draw from the pile until they play a card
                 p.addToHand(draw.drawFromDeck());
                 next = p.playCard(lastPlayed);
-            }
+            }*/
 
             // Alternate rule: Players unable to play a card only draws once from the deck
-            /*if (next == null) {
+            if (next == null) {
                 checkDecks();
                 System.out.println("\t" + p + " has drawn a card.");
                 p.addToHand(draw.drawFromDeck());
@@ -240,7 +239,12 @@ public class GameState {
                     System.out.println("\t" + p + " was unable to play.");
                     return;
                 }
-            }*/
+            }
+
+            // End the game if the current player has won
+            if (p.hasEmptyHand()) {
+                return;
+            }
 
             // check type of the next card
             switch (next) {
@@ -332,7 +336,12 @@ public class GameState {
     }
 
     public static void main(String[] args) {
-        // Get input from command line
+        /* Option 1: Sample games to run */
+        // runGame(2, 7, 2, 2, 4);
+        // runGame(4, 7, 2, 2, 4);
+        // runGame(6, 8, 3, 3, 3);
+
+        /* Option 2: Get input from command line */
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the number of players: ");
         int countPlayers = in.nextInt();
@@ -345,12 +354,16 @@ public class GameState {
         System.out.println("Enter the number of wild cards: ");
         int countWildCards = in.nextInt();
         in.close();
-        // Run the game
         runGame(countPlayers, countInitialCardsPerPlayer, countDigitCardsPerColor, countSpecialCardsPerColor, countWildCards);
 
-        /* Sample games to run */
-        // runGame(2, 7, 2, 2, 4);
-        // runGame(4, 7, 2, 2, 4);
-        // runGame(6, 8, 3, 3, 3);
+        /* Option 3: Use command line arguments */
+        /*if (args != null) {
+            runGame(Integer.parseInt(args[0]),
+                    Integer.parseInt(args[1]),
+                    Integer.parseInt(args[2]),
+                    Integer.parseInt(args[3]),
+                    Integer.parseInt(args[4])
+            );
+        }*/
     }
 }
