@@ -232,10 +232,12 @@ public class GameState {
             // Alternate rule: Players unable to play a card only draws once from the deck
             /*if (next == null) {
                 checkDecks();
+                System.out.println("\t" + p + " has drawn a card.");
                 p.addToHand(draw.drawFromDeck());
                 next = p.playCard(lastPlayed);
                 if (next == null) {
                     moveInDirection();
+                    System.out.println("\t" + p + " was unable to play.");
                     return;
                 }
             }*/
@@ -346,10 +348,9 @@ public class GameState {
         // Run the game
         runGame(countPlayers, countInitialCardsPerPlayer, countDigitCardsPerColor, countSpecialCardsPerColor, countWildCards);
 
-        /* Sample games to run
-        runGame(2, 7, 2, 2, 4);
-        runGame(4, 7, 2, 2, 4);
-        runGame(6, 8, 3, 3, 3);
-        */
+        /* Sample games to run */
+        // runGame(2, 7, 2, 2, 4);
+        // runGame(4, 7, 2, 2, 4);
+        // runGame(6, 8, 3, 3, 3);
     }
 }

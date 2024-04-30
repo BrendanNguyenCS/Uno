@@ -4,6 +4,7 @@ Note: Please keep in mind that the current game rules dictate that a player unab
 
 **This is version 2 of the game where draw four is supported.**
 
+The game parameters are as follows:
 ```json
 {
   "countPlayers": 6,
@@ -12,7 +13,6 @@ Note: Please keep in mind that the current game rules dictate that a player unab
   "countSpecialCardsPerColor": 3,
   "countWildCards": 3
 }
-
 ```
 
 **Starting game...**

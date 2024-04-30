@@ -9,6 +9,7 @@ In its current iteration, the entire game is run between 4 AI players using rand
 - Every player's turn consists of attempting to play a card.
 - If a player is unable to play a card, they must draw a card from the deck until they are able to play a card.
 - First player to have no cards in their hand wins the game.
+
 Note: The following normal rules don't apply to this game.
 - There are no stacking of draw 2 and 4 cards to avoid drawing cards.
 - Players with 1 card in their hand do not need to call "Uno".
@@ -39,6 +40,13 @@ if (next == null) {
         return;
     }
 }
+```
+## Testing
+
+For ease of testing, you may comment out the all the code in `GameState.main` which gets all the game parameters from the command line. To replace this, you can uncomment any of the same games under the `/* Sample games to run */` comment in the same method. You can also create your own sample game.
+
+```java
+runGame(5, 7, 2, 4, 5);
 ```
 
 ## Future Improvements

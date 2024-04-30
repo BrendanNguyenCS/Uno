@@ -4,6 +4,7 @@ Note: Please keep in mind that the current game rules dictate that a player unab
 
 **This is version 1 of the game where draw four is not a feature.**
 
+The game parameters are as follows:
 ```json
 {
   "countPlayers": 4,
