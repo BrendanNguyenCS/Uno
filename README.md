@@ -16,7 +16,7 @@ Note: The following normal rules don't apply to this game.
 - You cannot challenge draw four cards (a modern Uno game rule).
 - The jump-in rule from the Uno Steam game is not implemented.
 
-Examples of a game can be seen in the `example.md` and `example2.md` markdown files in the root of this repository.
+Examples of a game can be seen in the `example.md`, `example2.md`, and `example3.md` markdown files in the root of this repository.
 
 ### Alternate Rule
 
@@ -29,14 +29,16 @@ while (next == null) {
     next = p.playCard(lastPlayed);
 }
 ```
-Additionally, you need to uncomment the following code on lines 233-241 in `GameState.java`:
+Additionally, you need to uncomment the following code on lines 233-243 in `GameState.java`:
 ```java
 if (next == null) {
     checkDecks();
+    System.out.println("\t" + p + " has drawn a card.");
     p.addToHand(draw.drawFromDeck());
     next = p.playCard(lastPlayed);
     if (next == null) {
         moveInDirection();
+        System.out.println("\t" + p + " was unable to play.");
         return;
     }
 }
