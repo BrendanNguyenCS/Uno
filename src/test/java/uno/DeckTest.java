@@ -51,7 +51,7 @@ class DeckTest {
         @DisplayName("Base path")
         void initiateDeck1() {
             Deck d = new Deck(1, 1, 1);
-            assertEquals(53, d.getDeck().size());
+            assertEquals(54, d.getDeck().size());
         }
 
         @Nested

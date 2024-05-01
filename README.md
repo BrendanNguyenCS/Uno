@@ -72,7 +72,7 @@ runGame(5, 7, 2, 4, 5);
 You can also run the game by compiling the `GameState` class and running it either through the IDE or the command line. You should get each prompt asking you to enter each of the game parameters. An example is shown below:
 
 ```shell
-java GameState
+java uno.GameState
 Enter the number of players: 
 5
 Enter the number of initial cards per player: 
@@ -90,7 +90,7 @@ Enter the number of wild cards:
 You can also run the game by compiling the `GameState` class and running it with the game parameters as command line arguments. An example is shown below:
 
 ```shell
-java GameState 5 7 2 4 5
+java uno.GameState 5 7 2 4 5
 ```
 
 ## Future Improvements

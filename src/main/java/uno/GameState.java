@@ -25,7 +25,8 @@ public class GameState {
      */
     private final Deck discard;
     /**
-     * The direction
+     * The direction. The default direction is forward ({@code 1 > 2 > 3 > 4}).
+     * If the direction is reversed, the order is {@code 4 > 3 > 2 > 1}.
      */
     private boolean direction = true;
     /**
@@ -44,6 +45,8 @@ public class GameState {
      * @param countDigitCardsPerColor the number of {@link NormalCard normal} cards for each digit and color
      * @param countSpecialCardsPerColor the number of {@link SpecialCard special} cards of each kind for each color
      * @param countWildCards the number of total {@link WildCard wild} cards per kind
+     *
+     * @throws NoSuchElementException if no cards are left in the deck
      */
     private GameState(int countPlayers,
                      int countInitialCardsPerPlayer,
@@ -64,7 +67,13 @@ public class GameState {
         // add hands to players
         for (int i = 0; i < countInitialCardsPerPlayer; i++) {
             for (Player p : players) {
-                p.addToHand(draw.drawFromDeck());
+                Card c;
+                try {
+                    c = draw.drawFromDeck();
+                } catch (NoSuchElementException e) {
+                    throw new NoSuchElementException("No cards left in the deck");
+                }
+                p.addToHand(c);
             }
         }
 
@@ -93,14 +102,14 @@ public class GameState {
      * @param countSpecialCardsPerColor the number of {@link SpecialCard special} cards of each kind for each color
      * @param countWildCards the number of total {@link WildCard wild} cards of each kind
      * @return the game state
-     * @throws IllegalArgumentException if the number of players is less than 2 or the number of initial cards per player is less than 1
+     * @throws IllegalArgumentException if the number of players is less than 2, the number of initial cards per player is less than 1, the number of digit cards per color is less than 1, the number of special cards per color is less than 0, or the number of wild cards is less than 0
      */
     public static GameState startGame(int countPlayers,
                                       int countInitialCardsPerPlayer,
                                       int countDigitCardsPerColor,
                                       int countSpecialCardsPerColor,
                                       int countWildCards) {
-        if (countPlayers >= 2 && countInitialCardsPerPlayer > 0) {
+        if (countPlayers >= 2 && countInitialCardsPerPlayer > 0 && countDigitCardsPerColor > 0 && countSpecialCardsPerColor >= 0 && countWildCards >= 0) {
             return new GameState(countPlayers,
                                  countInitialCardsPerPlayer,
                                  countDigitCardsPerColor,
@@ -114,6 +123,7 @@ public class GameState {
 
     /**
      * @return the name of the current player
+     * @throws NoSuchElementException if no players are found
      */
     Player getCurrentPlayer() {
         Player p = players.peekFirst();
@@ -156,6 +166,17 @@ public class GameState {
     }
 
     /**
+     * Moves the game in the current direction
+     */
+    void moveInDirection() {
+        if (direction) {
+            initiateForwardDirection();
+        } else {
+            initiateReverseDirection();
+        }
+    }
+
+    /**
      * Draws {@code n} cards from the draw pile and adds them to the next player's hand
      * @param n the number of cards to draw
      * @return the next player who drew the cards
@@ -191,21 +212,11 @@ public class GameState {
     }
 
     /**
-     * Moves the game in the current direction
-     */
-    void moveInDirection() {
-        if (direction) {
-            initiateForwardDirection();
-        } else {
-            initiateReverseDirection();
-        }
-    }
-
-    /**
      * The current player takes their turn, and if they play a special card
      * the corresponding effects are performed. When the method returns,
-     * the next player is ready to take their turn.
-     * If the game is already over, this method has no effect.
+     * the next player is ready to take their turn.If the game is already over,
+     * this method has no effect.
+     * @throws NoSuchElementException if no players are founds
      */
     public void runOneTurn() {
         if (!isGameOver()) {
@@ -239,11 +250,6 @@ public class GameState {
                     System.out.println("\t" + p + " was unable to play.");
                     return;
                 }
-            }
-
-            // End the game if the current player has won
-            if (p.hasEmptyHand()) {
-                return;
             }
 
             // check type of the next card
@@ -301,10 +307,23 @@ public class GameState {
                     break;
             }
 
+            // End the game if the current player has won
+            if (p.hasEmptyHand()) {
+                return;
+            }
+
             moveInDirection();
         }
     }
 
+    /**
+     * Runs a game of Uno with the given parameters
+     * @param countPlayers the number of players
+     * @param countInitialCardsPerPlayer the number of cards initially dealt to each player
+     * @param countDigitCardsPerColor the number of {@link NormalCard normal} cards for each digit and color
+     * @param countSpecialCardsPerColor the number of {@link SpecialCard special} cards of each kind for each color
+     * @param countWildCards the number of total {@link WildCard wild} cards of each kind
+     */
     private static void runGame(int countPlayers, int countInitialCardsPerPlayer, int countDigitCardsPerColor, int countSpecialCardsPerColor, int countWildCards) {
         System.out.println("Starting game...");
         System.out.println("--------------------");

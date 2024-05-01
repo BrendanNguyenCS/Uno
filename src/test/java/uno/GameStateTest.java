@@ -13,6 +13,12 @@ public class GameStateTest {
         @DisplayName("Exceptions")
         class StartGameExceptions {
             @Test
+            @DisplayName("Not enough cards to start the game")
+            void notEnoughCards() {
+                assertThrows(NoSuchElementException.class, () -> GameState.startGame(6, 7, 1, 0, 0));
+            }
+
+            @Test
             @DisplayName("Invalid number of players")
             void invalidPlayers() {
                 assertThrows(IllegalArgumentException.class, () -> GameState.startGame(1, 1, 1, 1, 1));
@@ -50,7 +56,7 @@ public class GameStateTest {
             assertEquals(2, gs.getPlayers().size());
             assertEquals(2, gs.getPlayers().get(0).getHand().size());
             assertEquals(2, gs.getPlayers().get(1).getHand().size());
-            assertEquals(48, gs.getDraw().getDeck().size());
+            assertEquals(49, gs.getDraw().getDeck().size());
             assertEquals(1, gs.getDiscard().getDeck().size());
         }
     }
@@ -194,15 +200,15 @@ public class GameStateTest {
     @DisplayName("GameState: Check decks")
     void checkDecks() {
         GameState gs = GameState.startGame(4, 2, 1, 1, 1);
-        assertEquals(44, gs.getDraw().getDeck().size());
+        assertEquals(45, gs.getDraw().getDeck().size());
         assertEquals(1, gs.getDiscard().getDeck().size());
         // simulate draw deck is empty
         gs.getDiscard().addToDeck(gs.getDraw());
         gs.getDraw().clearDeck();
         assertEquals(0, gs.getDraw().getDeck().size());
-        assertEquals(45, gs.getDiscard().getDeck().size());
+        assertEquals(46, gs.getDiscard().getDeck().size());
         gs.checkDecks();
-        assertEquals(44, gs.getDraw().getDeck().size());
+        assertEquals(45, gs.getDraw().getDeck().size());
         assertEquals(1, gs.getDiscard().getDeck().size());
     }
 
